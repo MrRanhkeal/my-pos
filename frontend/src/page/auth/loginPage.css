@@ -1,0 +1,50 @@
+/* Background and centering */
+.login-page {
+    height: 100vh;
+    background-image: url("../../../../frontend/src/assets/coffee-shop.jpg"); /* Put your mountain background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glassmorphism container */
+.login-container {
+    background: rgba(192, 197, 196, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 40px;
+    width: 450px;
+    height: auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    color: white;
+    text-align: center;
+}
+
+/* Title */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Form options */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Links */
+.forgot-link,
+.register-link a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Register text */
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
+}

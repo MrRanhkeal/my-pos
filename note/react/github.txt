@@ -1,0 +1,28 @@
+    git repo : https://github.com/
+       - git clone https://github.com/
+      -  git init 
+      -  git add .
+      -  git status
+      -  git commit -m "first commit"
+      -  git branch -M main
+      -  git remote add origin https://github.com/
+      -  git push -u origin main
+
+* Then
+git add .
+git commit -m "first commit"
+git push -u origin main
+    ### how to push git ###
+        - stay on bash
+        - git clone //clone git url https via prot
+        - into project //you project name
+        - git init // init your project
+        - git add . //add your source
+        - git commit -m "status" //your status
+        - git push //push your source
+    # git origin when something err#
+        git pull --rebase origin main
+        git push -u origin main
+
+    #congit
+    git config --global --add safe.directory E:/IT_Class/Y_3/S_1/PHP_And_MySQL/ass/meeting_system_project_G4
