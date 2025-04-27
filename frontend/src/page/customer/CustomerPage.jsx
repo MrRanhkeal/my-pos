@@ -149,7 +149,7 @@ function CustomerPage() {
           <Form.Item name={"description"} label="description">
             <Input.TextArea placeholder="description" />
           </Form.Item>
-          <Form.Item name={"status"} label="status">
+          {/* <Form.Item name={"status"} label="status">
             <Select
               placeholder="Select status"
               options={[
@@ -163,7 +163,7 @@ function CustomerPage() {
                 },
               ]}
             />
-          </Form.Item>
+          </Form.Item> */}
 
           <Space>
             <Button type="default" onClick={onCloseModal}>Cancel</Button>
@@ -201,17 +201,17 @@ function CustomerPage() {
             title: "address",
             dataIndex: "address",
           },
-          {
-            key: "status",
-            title: "status",
-            dataIndex: "status",
-            render: (status) =>
-              status == 1 ? (
-                <Tag color="green">Active</Tag>
-              ) : (
-                <Tag color="red">InActive</Tag>
-              ),
-          },
+          // {
+          //   key: "status",
+          //   title: "status",
+          //   dataIndex: "status",
+          //   render: (status) =>
+          //     status == 1 ? (
+          //       <Tag color="green">Active</Tag>
+          //     ) : (
+          //       <Tag color="red">InActive</Tag>
+          //     ),
+          // },
           {
             key: "Action",
             title: "Action",

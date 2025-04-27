@@ -70,9 +70,9 @@ function LoginPage() {
             </Button>
           </Form.Item>
         </Form>
-        <div className="register-link">
+        {/* <div className="register-link">
           Dont have an account? <a href="/register">Register</a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

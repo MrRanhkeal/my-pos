@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Card, message, Image } from 'antd';
+import { Table, Card, message, Image, Tag,Alert } from 'antd';
 import { request } from '../../util/helper';
 // import PageContainer from '../container/PageContainer';
 
@@ -36,9 +36,9 @@ const StockPage = () => {
 
     const columns = [
         {
-            title: 'Id ',
-            dataIndex: 'id',
-            key: 'id',
+            key: "No",
+            title: "No",
+            render: (item, data, index) => index + 1,
         },
         {
             title: 'Product Name',
@@ -49,6 +49,16 @@ const StockPage = () => {
             title: 'Quantity',
             dataIndex: 'p_qty',
             key: 'p_qty',
+            render: (qty) => (
+                <>
+                    {qty}{' '}
+                    <Tag 
+                    style={{ background: 'transparent' }}
+                    color={qty === 0 ? 'red' : qty <= 5 ? 'yellow' : 'green'}>
+                        {qty === 0 ? 'Stock Sold Out' : qty <= 5 ? 'Low Stock' : 'In Stock'}
+                    </Tag>
+                </>
+            )
         },
         {
             title: 'Brand',

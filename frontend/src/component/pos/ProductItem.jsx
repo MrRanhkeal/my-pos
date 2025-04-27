@@ -1,4 +1,4 @@
-import { Button, Image } from "antd";
+import { Button, Image, Tag } from "antd";
 import React from "react";
 import { Config } from "../../util/config";
 import styles from "./ProductItem.module.css";
@@ -15,6 +15,7 @@ function ProductItem({
   discount,
   barcode,
   handleAdd,
+  qty,
 }) {
   var final_price = price;
   if (discount != 0 && discount != null) {
@@ -29,6 +30,11 @@ function ProductItem({
         {barcode} | {category_name} | {brand}
       </div>
       <div className={styles.p_des}>{description}</div>
+      <div className={styles.p_des}>
+        <Tag color={qty <= 0 ? 'red' : 'green'}>
+          {qty <= 0 ? 'Out of Stock' : 'In Stock'}
+        </Tag>
+      </div>
       {discount != 0 && discount != null ? (
         <div className={styles.p_price_container}>
           <div className={styles.p_price}>{price}$</div>

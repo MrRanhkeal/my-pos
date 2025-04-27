@@ -465,6 +465,11 @@ function ProductPage() {
         }}
         columns={[
           {
+            key: "No",
+            title: "No",
+            render: (item, data, index) => index + 1,
+          },
+          {
             key: "name",
             title: "Name",
             dataIndex: "name",
