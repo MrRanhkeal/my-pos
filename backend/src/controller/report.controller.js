@@ -40,5 +40,41 @@ exports.report_sale_summary = async (req, res) => {
     }
     catch (error) {
         logErr(error, "report.controller.js", "report_sale_summary");
+        res.status(500).json({
+            error: true,
+            message: "Internal server error"
+        });
+    }
+}
+
+exports.report_top_sale = async (req, res) => {
+    try {
+        let { from_date, to_date } = req.query;
+        let sql =
+            "SELECT p.name, SUM(od.qty) as total_qty, SUM(od.total) as total_amount " +
+            "FROM order_detail od " +
+            "INNER JOIN products p ON od.product_id = p.id " +
+            "INNER JOIN orders o ON od.order_id = o.id " +
+            "WHERE DATE_FORMAT(o.create_at,'%Y-%m-%d') BETWEEN :from_date AND :to_date " +
+            "GROUP BY p.id, p.name " +
+            "ORDER BY total_qty DESC " +
+            "LIMIT 10";
+
+        const [list] = await db.query(sql, {
+            from_date,
+            to_date
+        });
+
+        res.json({
+            data: list,
+            message: "success",
+            error: false
+        });
+    } catch (error) {
+        logErr(error, "report.controller.js", "report_top_sale");
+        res.status(500).json({
+            error: true,
+            message: "Internal server error"
+        });
     }
 }

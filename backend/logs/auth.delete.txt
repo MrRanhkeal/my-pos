@@ -1,2 +1,0 @@
-Error: Cannot delete or update a parent row: a foreign key constraint fails (`bnbdb`.`orders`, CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) + 2025-04-26 21:00:37 
-Error: Cannot delete or update a parent row: a foreign key constraint fails (`bnbdb`.`orders`, CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) + 2025-04-26 21:01:36 

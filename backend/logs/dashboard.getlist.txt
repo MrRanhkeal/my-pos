@@ -1,0 +1,1 @@
+Error: Table 'testdb.expense' doesn't exist + 2025-05-02 13:04:01 

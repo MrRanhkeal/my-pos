@@ -1,0 +1,8 @@
+TypeError: Cannot read properties of undefined (reading 'create_by') + 2025-05-01 04:46:38 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:51:05 
+TypeError: Cannot read properties of undefined (reading 'create_by') + 2025-05-01 04:57:29 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:59:47 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:59:48 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:59:49 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:59:49 
+TypeError: Cannot read properties of undefined (reading 'name') + 2025-05-01 04:59:49 

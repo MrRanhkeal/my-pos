@@ -8,7 +8,7 @@ module.exports = {
             HOST: 'localhost',
             USER: 'root',
             PASSWORD: '',
-            DATABASE: 'mycofedb',
+            DATABASE: 'testdb',
             PORT: 3307
         },
         token: {

@@ -8,7 +8,7 @@ try{
             validate_token(),
             report.report_sale_summary
         );
-        app.get("/api/report_top_sale",varidate_token(), report.report_top_sale);
+        app.get("/api/report_top_sale", validate_token(), report.report_top_sale);
     };
 }
 catch (error) {

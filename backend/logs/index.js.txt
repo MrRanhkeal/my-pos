@@ -109,3 +109,126 @@ SyntaxError: Unexpected token ':' + 2025-04-27 11:22:14
 SyntaxError: Unexpected token ':' + 2025-04-27 11:23:11 
 SyntaxError: Unexpected token ':' + 2025-04-27 11:23:14 
 ReferenceError: varidate_token is not defined + 2025-04-27 11:23:36 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:11:14 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:39:13 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:39:17 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:39:19 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:39:24 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:39:26 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:42:02 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:44:43 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:48:55 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:50:30 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:51:57 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:57:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:58:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 04:59:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:00:28 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:04:47 
+SyntaxError: Unexpected token 'var' + 2025-05-01 05:04:58 
+SyntaxError: Missing initializer in destructuring declaration + 2025-05-01 05:04:59 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:16 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:26 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:29 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:31 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:33 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:05:52 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:37 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:42 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:45 
+SyntaxError: Unexpected token 'var' + 2025-05-01 05:06:47 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:50 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:06:53 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:10 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:17 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:21 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:26 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:32 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:07:59 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:10 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:15 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:19 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:22 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:28 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:08:45 
+SyntaxError: Unexpected identifier 'parent_id' + 2025-05-01 05:09:28 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:09:33 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:09:53 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:09:54 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:09:58 
+SyntaxError: Unexpected token ';' + 2025-05-01 05:09:59 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:10:04 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:10:06 
+SyntaxError: Unexpected identifier 'message' + 2025-05-01 05:13:15 
+SyntaxError: Unexpected token ';' + 2025-05-01 05:13:16 
+SyntaxError: Unexpected token ';' + 2025-05-01 05:13:25 
+SyntaxError: Unexpected token ';' + 2025-05-01 05:13:28 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:13:31 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:13:46 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:13:48 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:13:51 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:13:53 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:00 
+SyntaxError: Unexpected token '}' + 2025-05-01 05:14:02 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:04 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:08 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:10 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:17 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:24 
+SyntaxError: Unexpected token ';' + 2025-05-01 05:14:25 
+SyntaxError: Unexpected token '}' + 2025-05-01 05:14:27 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:31 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:58 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:14:59 
+SyntaxError: Identifier 'exports' has already been declared + 2025-05-01 05:16:46 
+SyntaxError: Missing initializer in destructuring declaration + 2025-05-01 05:16:48 
+SyntaxError: Missing initializer in destructuring declaration + 2025-05-01 05:16:52 
+SyntaxError: Missing initializer in const declaration + 2025-05-01 05:16:56 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:16:57 
+ReferenceError: req is not defined + 2025-05-01 05:17:02 
+ReferenceError: requir is not defined + 2025-05-01 05:17:04 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:17:05 
+TypeError [ERR_INVALID_ARG_TYPE]: The "id" argument must be of type string. Received undefined + 2025-05-01 05:17:06 
+Error: Cannot find module '../'
+Require stack:
+- Z:\my_pos\coffee\backend\src\controller\category.controller.js
+- Z:\my_pos\coffee\backend\src\route\category.route.js
+- Z:\my_pos\coffee\backend\index.js + 2025-05-01 05:17:11 
+Error: Cannot find module '../controller/'
+Require stack:
+- Z:\my_pos\coffee\backend\src\controller\category.controller.js
+- Z:\my_pos\coffee\backend\src\route\category.route.js
+- Z:\my_pos\coffee\backend\index.js + 2025-05-01 05:17:17 
+Error: Cannot find module '../controller/a'
+Require stack:
+- Z:\my_pos\coffee\backend\src\controller\category.controller.js
+- Z:\my_pos\coffee\backend\src\route\category.route.js
+- Z:\my_pos\coffee\backend\index.js + 2025-05-01 05:17:20 
+Error: Cannot find module '../controller/auth.controlleer'
+Require stack:
+- Z:\my_pos\coffee\backend\src\controller\category.controller.js
+- Z:\my_pos\coffee\backend\src\route\category.route.js
+- Z:\my_pos\coffee\backend\index.js + 2025-05-01 05:17:25 
+Error: Cannot find module '../controller/auth.controll'
+Require stack:
+- Z:\my_pos\coffee\backend\src\controller\category.controller.js
+- Z:\my_pos\coffee\backend\src\route\category.route.js
+- Z:\my_pos\coffee\backend\index.js + 2025-05-01 05:17:28 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:17:39 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:17:43 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:18:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:18:58 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:19:00 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:01 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:08 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:09 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:12 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:13 
+ReferenceError: varidate_token is not defined + 2025-05-01 05:20:30 
+ReferenceError: varidate_token is not defined + 2025-05-01 23:20:49 
+ReferenceError: varidate_token is not defined + 2025-05-01 23:22:48 
+ReferenceError: varidate_token is not defined + 2025-05-01 23:26:10 
+ReferenceError: varidate_token is not defined + 2025-05-01 23:27:47 
+ReferenceError: varidate_token is not defined + 2025-05-01 23:27:49 
+ReferenceError: varidate_token is not defined + 2025-05-02 11:24:28 

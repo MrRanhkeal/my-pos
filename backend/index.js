@@ -3,57 +3,38 @@ const cors = require("cors");
 const app = express();
 const fs = require("fs");
 const path = require("path");
-const { logErr } = require("./src/util/logErr");
-//middleware
-app.use(express.json()); //new
+
+// Middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: "*" }));
-//cors is cross origin resource sharing for protexted webrowser to prevent unauthorized access
+
+// Basic route
 app.get("/", (req, res) => {
     const list = [
         {
             id: 1,
             name: "ranh",
-            gender: "male"
-        }
+            gender: "male",
+        },
     ];
     res.json({
         data: list,
-        message: "success"
+        message: "success",
     });
 });
 
-//basic route
-// try{
-//     require("./src/route/auth.route")(app);
-//     require("./src/route/category.route")(app);
-//     require("./src/route/config.route")(app);
-//     require("./src/route/customer.route")(app);
-//     require("./src/route/invoice.route")(app);
-//     require("./src/route/order_items.route")(app);
-//     require("./src/route/order.rotue")(app);
-//     require("./src/route/product.route")(app);
-//     require("./src/route/role.route")(app);
-// }
-// catch(err){
-//     //console.log(err);
-// }
-
-//dynamic route
-try {
-    const routesPath = path.join(__dirname, "src", "route");
-    fs.readdirSync(routesPath).forEach((file) => {
-        if (file.endsWith(".route.js")) {
-            require(path.join(routesPath, file))(app);
-        }
-    });
-} catch (err) {
-    logErr("index.js",err);
-}
+// Dynamic route
+const routesPath = path.join(__dirname, "src", "route");
+fs.readdirSync(routesPath).forEach((file) => {
+    if (file.endsWith(".route.js")) {
+        const route = require(path.join(routesPath, file));
+        route(app); // Call the route function with the app instance
+    }
+});
 
 // Error-handling middleware
 app.use((err, req, res, next) => {
-    logErr("index.js", err);
     res.status(500).json({ error: "Internal server error" });
 });
 
@@ -62,8 +43,8 @@ app.use((req, res) => {
     res.status(404).json({ error: `Route ${req.url} not found` });
 });
 
-//start server
+// Start server
 const port = 8081;
 app.listen(port, () => {
-    console.log('http://localhost:' + port);
+    console.log(`http://localhost:${port}`);
 });
