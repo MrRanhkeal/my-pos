@@ -76,18 +76,39 @@ function UserPage() {
   };
 
   const clickBtnDelete = async (record) => {
-    try {
-      const res = await request(`auth/delete/${record.id}`, "delete");
-      if (res && !res.error) {
-        message.success("User deleted successfully");
-        getList();
-      } else {
-        message.error(res.message || "Failed to delete user");
+      try{
+        Modal.confirm({
+          title: "delet",
+          descriptoin: "Are you sure to remove?",
+          okText: "Ok",
+          onOk: async ()=>{
+            const res = await request(`auth/delete/${record.id}`, "delete");
+            if (res && !res.error) {
+              message.success("User deleted successfully");
+              getList();
+            } else {
+              message.error(res.message || "Failed to delete user");
+            }
+          }
+        })
       }
-    } catch (error) {
-      console.error("Delete error:", error);
-      message.error("Failed to delete user");
-    }
+      catch(error){
+        console.error("Delete error:", error);
+        message.error("Failed to delete user");
+      }
+
+    // try {
+    //   const res = await request(`auth/delete/${record.id}`, "delete");
+    //   if (res && !res.error) {
+    //     message.success("User deleted successfully");
+    //     getList();
+    //   } else {
+    //     message.error(res.message || "Failed to delete user");
+    //   }
+    // } catch (error) {
+    //   console.error("Delete error:", error);
+    //   message.error("Failed to delete user");
+    // }
   };
 
   const handleCloseModal = () => {

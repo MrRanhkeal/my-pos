@@ -47,9 +47,9 @@ function CategoryPage() {
   };
   const onClickDelete = async (data, ) => {
     Modal.confirm({
-      title: "លុ​ប",
+      title: "delet",
       descriptoin: "Are you sure to remove?",
-      okText: "យល់ព្រម",
+      okText: "Ok",
       onOk: async () => {
         const res = await request("category", "delete", {
           id: data.id,
@@ -172,6 +172,11 @@ function CategoryPage() {
             key: "description",
             title: "description",
             dataIndex: "description",
+          },
+          {
+            key: "create_by",
+            title: "create_by",
+            dataIndex: "create_by",
           },
           {
             key: "status",
