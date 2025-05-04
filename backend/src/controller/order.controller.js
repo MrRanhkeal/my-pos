@@ -54,18 +54,40 @@ exports.getlist = async (req, res) => {
 };
 exports.getone = async (req, res) => {
     try {
-        var sql =
-            " select  " +
-            "   od.*, " +
-            "   p.name p_name, " +
-            "   p.brand p_brand, " +
-            "   p.description p_des, " +
-            "   p.image p_image, " +
-            "   c.name p_category_name " +
-            " from order_detail od  " +
+        //var sql =
+            // " select  " +
+            // "   od.*, " +
+            // "   p.name p_name, " +
+            // "   p.brand p_brand, " +
+            // "   p.description p_des, " +
+            // "   p.image p_image, " +
+            // "   c.name p_category_name, " +
+            // "   p.sugar_level_id as default_sugar_level_id, " +
+            // "   psl.level_name as default_sugar_level_name, " +
+            // "   od.sugar_level_id as order_sugar_level_id, " +
+            // "   osl.level_name as order_sugar_level_name " +
+            // " from order_detail od  " +
+            // " inner join products p on od.product_id = p.id " +
+            // " inner join category c on p.category_id = c.id " +
+            // " left join sugar_level psl on p.sugar_level_id = psl.id " +
+            // " left join sugar_level osl on od.sugar_level_id = osl.id " +
+            // " where od.order_id = :id ";
+        var sql = 
+            "SELECT " +
+            "od.*, " +
+            "p.name p_name, " +
+            "p.brand p_brand, " +
+            "p.description p_des, " +
+            "p.image p_image, " +
+            "c.name cate_name, " +
+            "p.sugar_id as sugar_id, " +
+            "s.value as sugar_value " +
+            "FROM order_detail od " +
             " inner join products p on od.product_id = p.id " +
             " inner join category c on p.category_id = c.id " +
+            " left join sugar s on p.sugar_id = s.id " +
             " where od.order_id = :id ";
+    
         const [list] = await db.query(sql, { id: req.params.id });
         res.json({
             list: list,
@@ -93,7 +115,7 @@ exports.create = async (req, res) => {
         await Promise.all(order_details.map(async (item) => {
             // order product
             var sqlOrderDetails =
-                "INSERT INTO order_detail (order_id,product_id,qty,price,discount,total) VALUES (:order_id,:product_id,:qty,:price,:discount,:total) ";
+                "INSERT INTO order_detail (order_id,product_id,qty,price,discount,total,sugar_level_id,note) VALUES (:order_id,:product_id,:qty,:price,:discount,:total,:sugar_level_id,:note) ";
             await db.query(sqlOrderDetails, {
                 ...item,
                 order_id: data.insertId, // override key order_id

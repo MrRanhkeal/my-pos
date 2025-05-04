@@ -49,6 +49,26 @@ const { logErr, db, removeFile } = require("../util/helper");
 //     }
 // };
 
+// Get product details for a list of products
+async function getProductDetails(productIds) {
+    if (!productIds || productIds.length === 0) return {};
+    
+    const sql = "SELECT product_id, key_name, value FROM product_details WHERE product_id IN (:productIds)";
+    const [details] = await db.query(sql, { productIds });
+    
+    // Group details by product_id
+    return details.reduce((acc, detail) => {
+        if (!acc[detail.product_id]) {
+            acc[detail.product_id] = [];
+        }
+        acc[detail.product_id].push({
+            key_name: detail.key_name,
+            value: detail.value
+        });
+        return acc;
+    }, {});
+}
+
 exports.getlist = async (req, res) => {
     try {
         var { txt_search, category_id, brand, page, is_list_all } = req.query;
@@ -62,8 +82,8 @@ exports.getlist = async (req, res) => {
 
         const offset = (page - 1) * pageSize; // calculate offset
 
-        var sqlSelect = "SELECT  p.*, c.name AS category_name ";
-        var sqlJoin = " FROM products p INNER JOIN category c ON p.category_id = c.id  ";
+        var sqlSelect = "SELECT p.*, c.name AS category_name, s.value AS sugar_value ";
+        var sqlJoin = " FROM products p INNER JOIN category c ON p.category_id = c.id LEFT JOIN sugar s  ON p.sugar_id = s.id ";
         var sqlWhere = " WHERE true ";
 
         if (txt_search) {
@@ -98,29 +118,42 @@ exports.getlist = async (req, res) => {
             dataCount = dataCountResult[0].total;
         }
 
+        // Get product details for all products in the list
+        const productIds = list.map(product => product.id);
+        const productDetails = await getProductDetails(productIds);
+
+        // Attach details to each product
+        const enrichedList = list.map(product => ({
+            ...product,
+            details: productDetails[product.id] || []
+        }));
+
         res.json({
-            list: list,
+            list: enrichedList,
             total: dataCount,
         });
     } catch (error) {
-        logError("product.getList", error, res);
+        logErr("product.getList", error, res);
     }
 };
 exports.create = async (req, res) => {
+    const connection = await db.getConnection();
     try {
+        await connection.beginTransaction();
         var sql =
-            " INSERT INTO products (category_id, barcode,name,brand,description,qty,price,discount,status,image,create_by ) " +
-            " VALUES (:category_id, :barcode, :name, :brand, :description, :qty, :price, :discount, :status, :image, :create_by ) ";
+            " INSERT INTO products (category_id, barcode, name, brand, description, qty, price, discount, status, image, create_by, sugar_id) " +
+            " VALUES (:category_id, :barcode, :name, :brand, :description, :qty, :price, :discount, :status, :image, :create_by, :sugar_id) ";
 
-        var [data] = await db.query(sql, {
+        var [data] = await connection.query(sql, {
             ...req.body,
+            sugar_id: req.body.sugar_id || null,
             image: req.files?.upload_image[0]?.filename,
             create_by: req.auth?.name,
         });
         if (req.files && req.files?.upload_image_optional) {
             var paramImagePorduct = [];
             req.files?.upload_image_optional.map((item, index) => {
-                paramImagePorduct.push([data?.insertId, item.filename]);
+                paramImagePorduct.push([data.insertId, item.filename]);
             });
             var sqlImageProduct =
                 "INSERT INTO product_image (product_id,image) VALUES :data";
@@ -139,7 +172,9 @@ exports.create = async (req, res) => {
     }
 };
 exports.update = async (req, res) => {
+    const connection = await db.getConnection();
     try {
+        await connection.beginTransaction();
         var sql =
             " UPDATE products set " +
             " category_id = :category_id, " +
@@ -216,15 +251,39 @@ exports.update = async (req, res) => {
         })
     }
     catch (error) {
+        await connection.rollback();
         logErr("product.update", error, res);
+    } finally {
+        connection.release();
     }
 };
 
 exports.remove = async (req, res) => {
+    const connection = await db.getConnection();
     try {
-        var [data] = await db.query("DELETE FROM products WHERE id = :id", {
+        await connection.beginTransaction();
+        var [data] = await connection.query("DELETE FROM products WHERE id = :id", {
             id: req.body.id //null data
         });
+        // Update product details if provided
+        if (req.body.details && Array.isArray(req.body.details)) {
+            // Delete existing details
+            await connection.query("DELETE FROM product_details WHERE product_id = ?", [req.body.id]);
+            
+            // Insert new details
+            if (req.body.details.length > 0) {
+                const detailsSql = "INSERT INTO product_details (product_id, key_name, value) VALUES ?";
+                const detailsValues = req.body.details.map(detail => [
+                    req.body.id,
+                    detail.key_name,
+                    detail.value
+                ]);
+                await connection.query(detailsSql, [detailsValues]);
+            }
+        }
+
+        await connection.commit();
+
         if (data.affectedRows && req.body.image != "" && req.body.image != null) {
             removeFile(req.body.image);
         }
@@ -281,6 +340,6 @@ isExistBarcode = async (barcode) => {
         }
         return false; // អត់ស្ទួនទេ
     } catch (error) {
-        logError("remove.create", error, res);
+        logErr("remove.create", error, res);
     }
 };

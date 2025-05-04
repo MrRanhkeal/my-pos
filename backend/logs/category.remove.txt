@@ -1,1 +1,0 @@
-Error: Cannot delete or update a parent row: a foreign key constraint fails (`cofetestdb`.`products`, CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)) + 2025-05-01 23:23:39 

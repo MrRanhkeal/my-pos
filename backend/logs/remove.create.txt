@@ -1,2 +1,0 @@
-Error: Cannot delete or update a parent row: a foreign key constraint fails (`bnbdb`.`product_image`, CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)) + 2025-04-25 01:36:01 
-Error: Cannot delete or update a parent row: a foreign key constraint fails (`mycofedb`.`product_image`, CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)) + 2025-05-01 04:31:09 

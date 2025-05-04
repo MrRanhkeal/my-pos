@@ -8,7 +8,7 @@ module.exports = {
             HOST: 'localhost',
             USER: 'root',
             PASSWORD: '',
-            DATABASE: 'testdb',
+            DATABASE: 'testmydb',
             PORT: 3307
         },
         token: {

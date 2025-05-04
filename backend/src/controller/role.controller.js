@@ -3,9 +3,14 @@ const {db, logErr} = require("../util/helper");
 exports.getlist = async (req, res) => {
     try {
         var [list] = await db.query("SELECT * FROM roles");
+        // Ensure permissions are valid JSON
+        list = list.map(role => ({
+            ...role,
+            permissions: role.permissions || '[]'
+        }));
         res.json({
-            data:list,
-            message:"success"
+            data: list,
+            message: "success"
         })
     } 
     catch (error) {
@@ -14,11 +19,25 @@ exports.getlist = async (req, res) => {
 };
 exports.create = async (req, res) => {
     try {
-        var sql = "insert into roles(name,permissions,status) values(:name,:permissions,:status)";
-        var [list] = await db.query(sql,req.body);
+        // Validate permissions is valid JSON array
+        let permissions = req.body.permissions;
+        try {
+            JSON.parse(permissions);
+        } catch {
+            permissions = '[]';
+        }
+
+        var sql = "insert into roles(name,permissions) values(:name,:permissions)";
+        var [list] = await db.query(sql, {
+            ...req.body,
+            permissions
+        });
+
+        // Get the created role
+        var [newRole] = await db.query("SELECT * FROM roles WHERE id = ?", [list.insertId]);
         res.json({
-            data:list,
-            message:"success"
+            data: newRole[0],
+            message: "success"
         })
     } 
     catch (error) {
@@ -27,11 +46,25 @@ exports.create = async (req, res) => {
 };
 exports.update = async (req, res) => {
     try {
-        var sql = "update roles set name=:name,permissions=:permissions,status=:status where id=:id";
-        var [list] = await db.query(sql,req.body);
+        // Validate permissions is valid JSON array
+        let permissions = req.body.permissions;
+        try {
+            JSON.parse(permissions);
+        } catch {
+            permissions = '[]';
+        }
+
+        var sql = "update roles set name=:name,permissions=:permissions where id=:id";
+        var [result] = await db.query(sql, {
+            ...req.body,
+            permissions
+        });
+
+        // Get the updated role
+        var [updatedRole] = await db.query("SELECT * FROM roles WHERE id = ?", [req.body.id]);
         res.json({
-            data:list,
-            message:"success"
+            data: updatedRole[0],
+            message: "success"
         })
     } 
     catch (error) {
